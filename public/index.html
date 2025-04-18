@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> rondom quote</title>
+</head>
+<body>
+    <h1>Quote van de dag</h1>
+    <p id="quote">lade...</p>
+    <p id="author"></p>
+    <button onclick="fetchquote()">Click here</button>
+
+    <script>
+        const fetchquote = async () => {
+            console.log("vandaag")
+            const res = await fetch("/api/quote") 
+            const data = await res.json()
+            document.getElementById("quote").innerText = data.body
+            document.getElementById("author").innerText = data.author
+        }
+        fetchquote()
+    </script>
+
+</body>
+</html>
